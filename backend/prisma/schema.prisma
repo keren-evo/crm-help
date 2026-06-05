@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" // change to "sqlite" for quick local dev if preferred
   url      = env("DATABASE_URL")
 }
 
@@ -7,32 +7,25 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  name      String?
-  password  String
-  role      String    @default("user")
-  tickets   Ticket[]  @relation("requester_tickets")
-  createdAt DateTime  @default(now())
-}
-
 model Ticket {
-  id          Int          @id @default(autoincrement())
-  title       String
-  description String?
-  status      String       @default("open")
-  requester   User         @relation(fields: [requesterId], references: [id], name: "requester_tickets")
-  requesterId Int
-  attachments Attachment[]
-  createdAt   DateTime     @default(now())
-}
-
-model Attachment {
-  id        Int      @id @default(autoincrement())
-  filename  String
-  path      String
-  ticket    Ticket?  @relation(fields: [ticketId], references: [id])
-  ticketId  Int?
-  createdAt DateTime  @default(now())
+  ticket_id               String   @id
+  date_submitted          DateTime @default(now())
+  full_name               String
+  email                   String
+  department              String
+  company_affiliation     String
+  category                String
+  priority                String
+  issue_title             String
+  issue_description       String
+  screenshot_file         String?
+  error_link              String?
+  status                  String   @default("Submitted")
+  assigned_to             String?
+  internal_notes          String?
+  public_resolution_notes String?
+  date_resolved           DateTime?
+  last_updated            DateTime @updatedAt
+  escalated_to_it         Boolean  @default(false)
+  solved_without_it       Boolean  @default(false)
 }
