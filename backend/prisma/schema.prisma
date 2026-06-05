@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  password  String
+  role      String    @default("user")
+  tickets   Ticket[]  @relation("requester_tickets")
+  createdAt DateTime  @default(now())
+}
+
+model Ticket {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  status      String       @default("open")
+  requester   User         @relation(fields: [requesterId], references: [id], name: "requester_tickets")
+  requesterId Int
+  attachments Attachment[]
+  createdAt   DateTime     @default(now())
+}
+
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  path      String
+  ticket    Ticket?  @relation(fields: [ticketId], references: [id])
+  ticketId  Int?
+  createdAt DateTime  @default(now())
+}
