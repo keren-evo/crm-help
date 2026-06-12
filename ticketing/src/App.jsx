@@ -29,9 +29,9 @@ export default function App() {
     if (missingEnv) ensureDemoSeedData()
   }, [])
 
-  const shell = (content, minimalHeader = false) => (
+  const shell = (content) => (
     <>
-      <header className={`site-header${minimalHeader ? ' site-header--minimal' : ''}`}>
+      <header className="site-header">
         <div className="header-inner">
           <div className="header-left">
             <a href="#/" aria-label="Home"><EvoLogo /></a>
@@ -53,12 +53,12 @@ export default function App() {
   )
 
   if (missingEnv) {
-    if (route === '/admin') return shell(<AdminPage />, true)
+    if (route === '/admin') return shell(<AdminPage />)
     if (route === '/reporting') return shell(<ReportingPage />)
     return shell(<DemoSubmitPage />)
   }
 
-  if (route === '/admin') return shell(<AdminPage />, true)
+  if (route === '/admin') return shell(<AdminPage />)
   if (route === '/reporting') return shell(<ReportingPage />)
   return shell(<SubmitPage />)
 }

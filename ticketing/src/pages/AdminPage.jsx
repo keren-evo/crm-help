@@ -36,7 +36,7 @@ export default function AdminPage() {
   }, [])
 
   if (!staff) {
-    return <StaffAuthPanel onAuthed={loadStaff} />
+    return <StaffAuthPanel onAuthed={loadStaff} fullPage={false} />
   }
 
   return (
