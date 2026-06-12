@@ -34,6 +34,10 @@ jobs:
         env:
           # GitHub Pages project sites are served at /{repo-name}/
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_STORAGE_BUCKET: ${{ secrets.VITE_STORAGE_BUCKET }}
+          VITE_EDGE_URL: ${{ secrets.VITE_EDGE_URL }}
         run: |
           npm ci --legacy-peer-deps
           npm run build

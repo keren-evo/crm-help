@@ -49,8 +49,13 @@
 }
 
 .header-nav a.active {
-  color: #fff;
+  color: var(--evo-text);
   background: rgba(168, 85, 247, 0.2);
+}
+
+:root[data-theme='light'] .header-nav a.active {
+  color: var(--evo-accent);
+  background: rgba(124, 58, 237, 0.14);
 }
 
 .card {

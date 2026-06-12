@@ -78,14 +78,22 @@ Or connect the repo in [Netlify](https://app.netlify.com) with:
 > **Skip** `20250612110000_add_superadmin_crmhelp.sql` — it fails because PostgreSQL cannot add an enum value and use it in the same transaction.
 
 > If you see `unsafe use of new value "superadmin"`, run step 2 alone first, then step 3.
-3. Set Netlify/Pages env vars:
+3. **GitHub Pages (Actions secrets)** — repo **Settings → Secrets and variables → Actions**:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY` (JWT from Supabase dashboard)
+   - `VITE_STORAGE_BUCKET` (`tickets`)
+   - `VITE_EDGE_URL` (e.g. `https://<project>.supabase.co/functions/v1/send-confirmation`)
+
+   The workflow `.github/workflows/deploy-ticketing.yml` passes these into `npm run build`. Without them, the live site runs in demo mode.
+
+4. Set Netlify/Pages env vars (if not using GitHub Actions secrets above):
    ```
    VITE_SUPABASE_URL=https://wzeazwfsbkadgnzytwos.supabase.co
    VITE_SUPABASE_ANON_KEY=<real jwt anon key>
    VITE_STORAGE_BUCKET=tickets
    VITE_EDGE_URL=https://wzeazwfsbkadgnzytwos.supabase.co/functions/v1/send-confirmation
    ```
-4. Redeploy frontend
+5. Redeploy frontend
 
 ## Local preview
 
