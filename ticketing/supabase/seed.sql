@@ -1,0 +1,13 @@
+-- Optional seed data after creating Supabase Auth users for staff.
+-- Replace auth_id values with real UUIDs from auth.users.
+-- Example triage lead (admin):
+-- INSERT INTO staff_users (auth_id, name, email, department, company, role)
+-- VALUES ('00000000-0000-0000-0000-000000000001', 'Hillel Adelman', 'hillel@example.com', 'IT', 'Evo', 'admin');
+-- Example manager:
+-- INSERT INTO staff_users (auth_id, name, email, department, company, role)
+-- VALUES ('00000000-0000-0000-0000-000000000002', 'Dept Manager', 'manager@example.com', 'Operations', 'Evo', 'manager');
+-- Example agent:
+-- INSERT INTO staff_users (auth_id, name, email, department, company, role)
+-- VALUES ('00000000-0000-0000-0000-000000000003', 'Build Agent', 'agent@example.com', 'IT', 'Evo', 'agent');
+-- Update category notification routing:
+-- UPDATE ticket_categories SET notification_emails = ARRAY['data-team@evohcg.com'] WHERE name = 'Data issues';

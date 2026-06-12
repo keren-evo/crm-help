@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: evo-ticketing
+    ports:
+      - "${APP_PORT:-3000}:80"
+    environment:
+      # Vite environment variables are built at image build time.
+      # For development with live reload, use the 'dev' service below.
+      VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+      VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+      VITE_STORAGE_BUCKET: ${VITE_STORAGE_BUCKET:-tickets}
+      VITE_EDGE_URL: ${VITE_EDGE_URL}
+    depends_on:
+      - supabase-emulator
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # Development service with hot reload (alternative to production 'app' service)
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: evo-ticketing-dev
+    ports:
+      - "${APP_PORT_DEV:-5173}:5173"
+    volumes:
+      - ./src:/app/src
+      - ./index.html:/app/index.html
+      - ./package.json:/app/package.json
+    environment:
+      VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+      VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+      VITE_STORAGE_BUCKET: ${VITE_STORAGE_BUCKET:-tickets}
+      VITE_EDGE_URL: ${VITE_EDGE_URL}
+    depends_on:
+      - supabase-emulator
+    restart: unless-stopped
+
+  # Local Supabase emulator (optional, for local testing)
+  supabase-emulator:
+    image: supabase/supabase:latest
+    container_name: supabase-emulator
+    ports:
+      - "${SUPABASE_PORT:-54321}:54321"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    restart: unless-stopped

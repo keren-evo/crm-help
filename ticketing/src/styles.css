@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --evo-primary: #330662;
+  --evo-accent: #8900E1;
+  --evo-bg-light: #F0DFFB;
+  --evo-muted: #4B6072;
+  --evo-text: #0B0A0A;
+  --evo-white: #FFFFFF;
+}
+
+/* Dark theme overrides */
+:root[data-theme='dark']{
+  --evo-bg-light: #0b0b0e;
+  --evo-white: #091018;
+  --evo-text: #e6e6ea;
+  --evo-muted: #bfc7d0;
+}
+
+/* Smooth transition for theme changes */
+:root, body, .container, .app-header, .form, input, textarea, select, button {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+*{box-sizing:border-box}
+/* Use Poppins as the app font everywhere */
+html,body,*{font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial !important}
+body{background:var(--evo-white);color:var(--evo-text);padding:24px}
+.hero {
+  position:relative;
+  background: linear-gradient(180deg, rgba(137,0,225,0.9), rgba(51,6,98,0.85));
+  color: white;
+  padding:64px 24px;
+  border-radius:0 0 24px 24px;
+  overflow:hidden;
+}
+
+.hero .hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:32px;align-items:center}
+
+/* Category buttons */
+.categories{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.categories.prominent{justify-content:space-between;gap:16px}
+.cat-btn{padding:14px 18px;border-radius:12px;background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.06);cursor:pointer;font-weight:700}
+.categories.prominent .cat-btn{flex:1;min-width:160px;margin:6px;padding:18px 16px;font-size:16px;border-radius:14px;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.categories.prominent .cat-btn.active{background:var(--evo-white);color:var(--evo-primary);box-shadow:0 6px 18px rgba(11,10,10,0.08);transform:translateY(-2px)}
+.cat-btn.active{background:white;color:var(--evo-primary);border-color:rgba(0,0,0,0.04)}
+
+.hero-left{flex:1}
+.hero-illustration{width:420px}
+
+.container{max-width:760px;margin:24px auto;background:var(--evo-bg-light);padding:24px;border-radius:8px}
+
+.link-btn{background:transparent;border:0;color:var(--evo-primary);cursor:pointer;font-weight:700;padding:8px 12px;border-radius:8px}
+.link-btn:hover{text-decoration:underline}
+h1{color:var(--evo-primary)}
+/* Hero heading styles to match EVO site */
+.hero h1{font-size:56px;line-height:1;letter-spacing:-1px;margin:0 0 12px;font-weight:700;font-family:'Poppins',sans-serif}
+.hero p.lead{font-size:20px;opacity:0.95;margin:0 0 20px}
+
+.form{display:grid;gap:12px}
+.form input, .form select, .form textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(15,15,20,0.08); background:var(--evo-white); color:var(--evo-text); box-shadow: 0 1px 2px rgba(11,10,10,0.04) }
+.form textarea{min-height:120px}
+.form input[type="file"]{padding:6px}
+.form button{background:var(--evo-primary);color:#fff;padding:12px;border:0;border-radius:12px;cursor:pointer}
+.form button:hover{background:var(--evo-accent)}
+
+.cta-primary{background:white;color:var(--evo-primary);padding:12px 18px;border-radius:999px;font-weight:700}
+.cta-outline{background:transparent;color:white;padding:10px 16px;border-radius:999px;border:2px solid rgba(255,255,255,0.2)}
+.card-quote{background:rgba(255,255,255,0.08);padding:18px;border-radius:999px;display:flex;gap:12px;align-items:center}
+.card-quote img{height:56px;width:56px;border-radius:50%;border:4px solid rgba(255,255,255,0.12)}
+
+:root[data-theme='dark'] .hero{background: linear-gradient(180deg, rgba(137,0,225,0.9), rgba(51,6,98,0.95));}
+.status{margin-top:12px;font-weight:600}
+
+/* Subtle help panel design */
+.help-panel{background:var(--evo-white);padding:16px;border-radius:8px;margin-bottom:16px;color:var(--evo-muted)}
+.help-panel.subtle{background:transparent;color:rgba(255,255,255,0.9);opacity:0.95}
+.help-panel.full{background:var(--evo-white);color:var(--evo-text)}
+.help-panel.full h2{color:var(--evo-primary)}
+.help-panel h2{color:var(--evo-primary);font-size:20px;margin:0 0 8px}
+.help-panel h3{color:var(--evo-primary);margin-top:16px}
+.help-panel ul, .help-panel ol{color:inherit;margin-left:18px}
+.help-panel li{margin:8px 0}
+
+/* Tooltip / info dot */
+.info-wrap{position:relative;display:inline-flex;align-items:center;gap:8px}
+.info-dot{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.12);color:white;font-size:12px;font-weight:700;cursor:default}
+.info-tip{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.8);color:white;padding:8px 10px;border-radius:8px;white-space:normal;max-width:260px;opacity:0;pointer-events:none;transition:opacity 160ms ease}
+.info-wrap:hover .info-tip, .info-wrap:focus .info-tip{opacity:1;pointer-events:auto}
+.info-tip::after{content:'';position:absolute;left:-6px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:6px solid rgba(0,0,0,0.8)}
+
+/* legacy .app-header styles removed — header is styled via modern.css (.site-header) */
+
+/* Theme toggle */
+.theme-toggle{margin-left:auto;padding:6px 10px;border-radius:8px;background:var(--evo-primary);color:#fff;border:0;cursor:pointer;font-weight:600}
+.theme-toggle:hover{background:var(--evo-accent)}
+
+:root[data-theme='dark'] .theme-toggle{background:transparent;color:var(--evo-text);border:1px solid rgba(255,255,255,0.08)}
+:root[data-theme='dark'] .theme-toggle:hover{background:rgba(255,255,255,0.03)}
+
+.demo-banner{background:#fff8e6;border:1px solid #f0d9a8;color:#5c4a1a;padding:10px 16px;font-size:13px;text-align:center;margin:0 auto;max-width:1100px;border-radius:0 0 10px 10px}
+.demo-banner code{background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px;font-size:12px}
+
+.container{max-width:760px;margin:24px auto;background:var(--evo-bg-light);padding:24px;border-radius:8px}
