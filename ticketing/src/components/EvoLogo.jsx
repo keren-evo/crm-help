@@ -1,16 +1,13 @@
 import React from 'react'
 
-export default function EvoLogo({className, height=36}){
+export default function EvoLogo({ className, height = 36 }) {
   return (
-    <svg className={className} width="auto" height={height} viewBox="0 0 326 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<mask id="mask0_20_32" style={{maskType:'luminance'}} maskUnits="userSpaceOnUse" x="0" y="0" width="326" height="116">
-<path d="M325.135 0H0V115.74H325.135V0Z" fill="white"/>
-</mask>
-<g mask="url(#mask0_20_32)">
-{/* SVG content truncated for brevity: full shapes preserved */}
-<path d="M91.141 48.6262C90.2818 48.6262 89.4543 48.5308 88.5951 48.3716C87.7677 48.2125 86.9722 47.9579 86.1766 47.6397C85.4128 47.3215 84.6491 46.9078 83.9808 46.4304C83.2489 45.9531 82.6124 45.4121 82.0078 44.8393C81.435 44.2347 80.894 43.5663 80.4166 42.8662C79.9393 42.1661 79.5574 41.4024 79.2074 40.6386C78.8891 39.8749 78.6346 39.0475 78.4754 38.2201C78.3163 37.3927 78.2209 36.5653 78.2209 35.7061C78.2209 32.301 79.6211 28.9596 82.0078 26.5729C84.9992 23.5815 89.4544 22.2131 93.655 23.0405C94.4824 23.1997 95.3098 23.4224 96.0735 23.7725C96.8373 24.0907 97.601 24.5044 98.3011 24.9499C99.0012 25.4273 99.6696 25.9683 100.274 26.5729C102.661 28.9596 104.061 32.301 104.061 35.7061C104.061 36.5653 103.966 37.3927 103.806 38.2201C103.647 39.0475 103.393 39.8749 103.075 40.6386C102.756 41.4024 102.343 42.1661 101.865 42.8662C101.388 43.5663 100.847 44.2347 100.274 44.8393C97.8557 47.226 94.5142 48.6262 91.141 48.6262Z" fill="#330662"/>
-{/* rest omitted for brevity - original file contains many paths */}
-</g>
-</svg>
+    <img
+      src={`${import.meta.env.BASE_URL}evo-logo.svg`}
+      alt="Evo"
+      className={className}
+      height={height}
+      style={{ width: 'auto', display: 'block' }}
+    />
   )
 }

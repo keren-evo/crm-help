@@ -36,16 +36,7 @@ export default function AdminPage() {
   }, [])
 
   if (!staff) {
-    return (
-      <div className="container wide">
-        <StaffAuthPanel onAuthed={loadStaff} />
-        <p className="muted" style={{ marginTop: 16 }}>
-          Staff accounts must exist in the <code>staff_users</code> table with a matching Supabase Auth user.
-          Admins see all tickets; managers see their department.
-        </p>
-        <p><a href="#/">← Back to submit form</a></p>
-      </div>
-    )
+    return <StaffAuthPanel onAuthed={loadStaff} />
   }
 
   return (

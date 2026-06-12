@@ -51,7 +51,7 @@ export default function SubmitPage() {
             <div style={{ height: 12 }} />
             <h1 style={{ fontSize: 44, marginTop: 8 }}>HOW CAN WE HELP YOU TODAY?</h1>
             <p className="lead">
-              Choose a category below so we can acknowledge your issue and help you quickly.
+              Pick a category below and share what's going on — we'll take it from there.
             </p>
             <div className="categories prominent" role="list" aria-label="Support categories">
               {CATEGORIES.map((c) => (

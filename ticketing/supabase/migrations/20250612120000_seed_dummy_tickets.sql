@@ -1,5 +1,5 @@
 -- Seed dummy tickets for testing (skipped if seed rows already exist)
--- Lookup examples: sarah.chen@evohcg.com + 550e8400-e29b-41d4-a716-446655440001
+-- Lookup examples: sarah.chen@evohcg.com + cd37ccfb-9c8a-44cf-b1f5-f6688a189cce
 
 DO $$
 BEGIN

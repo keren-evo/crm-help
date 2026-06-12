@@ -25,13 +25,7 @@ export default function ReportingPage() {
   }, [])
 
   if (!staff) {
-    return (
-      <div className="container wide">
-        <StaffAuthPanel onAuthed={loadStaff} />
-        <p className="muted">Reporting requires manager or admin access.</p>
-        <p><a href="#/">← Back to submit form</a></p>
-      </div>
-    )
+    return <StaffAuthPanel onAuthed={loadStaff} fullPage={false} />
   }
 
   if (!canAccessReporting(staff.role)) {

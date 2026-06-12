@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { hasValidSupabaseConfig } from '../lib/authRecovery'
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light')
@@ -25,8 +25,14 @@ export default function ThemeToggle() {
   }, [theme])
 
   return (
-    <button className="theme-toggle" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} aria-label="Toggle theme">
-      {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+      aria-label="Toggle theme"
+      title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {theme === 'dark' ? '☀' : '🌙'}
     </button>
   )
 }

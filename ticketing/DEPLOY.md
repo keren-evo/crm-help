@@ -66,7 +66,18 @@ Or connect the repo in [Netlify](https://app.netlify.com) with:
 ## Supabase production (optional, shared data)
 
 1. Create a Supabase project at https://supabase.com
-2. Run migrations in `supabase/migrations/` (includes dummy tickets + superadmin)
+2. Run migrations in `supabase/migrations/` **in order** (SQL Editor — **one file per run**):
+
+| Order | File |
+|-------|------|
+| 1 | `20250612100000_initial_ticketing_schema.sql` |
+| 2 | `20250612130000_add_superadmin_enum_value.sql` |
+| 3 | `20250612130001_superadmin_rls_and_seed.sql` |
+| 4 | `20250612120000_seed_dummy_tickets.sql` |
+
+> **Skip** `20250612110000_add_superadmin_crmhelp.sql` — it fails because PostgreSQL cannot add an enum value and use it in the same transaction.
+
+> If you see `unsafe use of new value "superadmin"`, run step 2 alone first, then step 3.
 3. Set Netlify/Pages env vars:
    ```
    VITE_SUPABASE_URL=https://wzeazwfsbkadgnzytwos.supabase.co

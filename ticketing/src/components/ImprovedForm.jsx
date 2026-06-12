@@ -6,7 +6,7 @@ export default function ImprovedForm({ submit, form, setForm, file, setFile, set
   return (
     <form onSubmit={submit} className="improved-form" aria-label="Submit support ticket">
       <div className="card">
-        <h2>We acknowledge your issue — please provide details</h2>
+        <h2>You're in the right place — a few details help us get started</h2>
         <div className="field">
           <label className="floating">Category</label>
           <input value={form.category} readOnly aria-readonly="true" />
